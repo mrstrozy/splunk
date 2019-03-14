@@ -1,0 +1,18 @@
+{
+  "name": "indexer",
+  "default_attributes": {
+    "splunk": {
+      "type": "server",
+      "clustering": {
+        "mode": "slave"
+      }
+    }
+  },
+  "chef_environment": "prod",
+  "run_list": [
+    "recipe[splunk_cookbook::install_splunk_server]",
+    "recipe[splunk_cookbook::setup_auth]",
+    "recipe[splunk_cookbook::setup_clustering]",
+    "recipe[splunk_cookbook::setup_forwarding]"
+  ]
+}

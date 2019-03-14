@@ -1,0 +1,10 @@
+[indexer_discovery:master1]
+pass4SymmKey = <%= @symmKey %>
+master_uri = https://<%= @master_uri %>:8089
+
+[tcpout:group1]
+indexerDiscovery = master1
+useACK=true
+
+[tcpout]
+defaultGroup = group1

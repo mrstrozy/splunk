@@ -1,0 +1,17 @@
+{
+  "id": "testmaster",
+  "name": "changed.strozyk.com",
+  "chef_type": "node",
+  "chef_environment": "prod",
+  "ipaddress": "54.162.129.249",
+  "run_list": ["role[master]"],
+  "json_class": "Chef::Node",
+  "default": {
+    "ipaddress": "35.175.215.6"
+  },
+  "splunk": {
+    "clustering": {
+      "mode": "master"
+    }
+  }
+}

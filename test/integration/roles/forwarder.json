@@ -1,0 +1,12 @@
+{
+  "name": "forwarder",
+  "default_attributes": {
+    "splunk": {
+      "type": "forwarder"
+    }
+  },
+  "run_list": [
+    "recipe[splunk_cookbook::install_splunk_server]",
+    "recipe[splunk_cookbook::setup_forwarding]"
+  ]
+}

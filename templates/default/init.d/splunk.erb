@@ -1,0 +1,57 @@
+#!/bin/sh
+#
+# chkconfig: 2345 90 60
+# description: Splunk indexer service
+#
+RETVAL=0
+
+. /etc/init.d/functions
+# export SPLUNK_OS_USER=splunk
+BIN=<%= @splunk_home %>/bin/splunk
+
+start() {
+  echo Starting Splunk...
+  $BIN start --no-prompt --answer-yes  --accept-license
+  RETVAL=$?
+  [ $RETVAL -eq 0 ] && touch /var/lock/subsys/splunk
+}
+stop() {
+  echo Stopping Splunk...
+  $BIN stop
+  RETVAL=$?
+  [ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/splunk
+}
+restart() {
+  echo Restarting Splunk...
+  $BIN restart
+  RETVAL=$?
+  [ $RETVAL -eq 0 ] && touch /var/lock/subsys/splunk
+}
+status() {
+  echo Splunk status:
+  $BIN status
+  RETVAL=$?
+}
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  restart)
+    restart
+    ;;
+  reload)
+    restart
+    ;;
+  status)
+    status
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart|status|reload}"
+    exit 1
+    ;;
+esac
+
+exit $RETVAL

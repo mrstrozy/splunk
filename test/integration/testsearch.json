@@ -1,0 +1,18 @@
+{
+  "id": "testsearch",
+  "name": "search.strozyk.com",
+  "chef_type": "node",
+  "chef_environment": "prod",
+  "ipaddress": "54.162.129.249",
+  "run_list": ["role[search]"],
+  "json_class": "Chef::Node",
+  "default": {
+    "ipaddress": "54.162.129.249",
+    "hostname": "ec2-34-228-247-192.compute-1.amazonaws.com"
+  },
+  "splunk": {
+    "clustering": {
+      "mode": "search"
+    }
+  }
+}
